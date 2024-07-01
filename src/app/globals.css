@@ -34,3 +34,12 @@
 .light-darkmode {
   @apply dark:!text-gray-200 dark:!bg-gray-700 transition-colors duration-300 ease-in-out;
 }
+
+/* react apext chart component dark mode apply    */
+.apexcharts-tooltip.apexcharts-theme-light {
+  @apply dark:bg-gray-800;
+}
+
+.apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
+  @apply dark:bg-brandcolorlighter;
+}

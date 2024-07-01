@@ -11,14 +11,16 @@ const ColorScheme = () => {
   };
   return (
     <div className="p-4">
-      <h2 className="text-brandcolor dark:text-brandcolorlighter font-semibold text-sm">
-        COLOR SCHEME
-      </h2>
-      <h4 className="text-gray-500 dark:text-gray-50 tracking-tighter text-sm">
-        Choose Light or Dark Scheme.
-      </h4>
+      <div className="flex flex-col justify-center items-left lg:px-7">
+        <h2 className="text-brandcolor dark:text-brandcolorlighter font-semibold text-sm  ">
+          COLOR SCHEME
+        </h2>
+        <h4 className="text-gray-500 dark:text-gray-50 tracking-tighter   text-sm ">
+          Choose Light or Dark Scheme.
+        </h4>
+      </div>
 
-      <section className="flex items-center gap-5 mt-3">
+      <section className="flex flex-wrap items-center justify-center gap-5 mt-3">
         {/*  Light */}
         <button onClick={toggleTheme}>
           <div

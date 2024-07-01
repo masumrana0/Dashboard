@@ -34,7 +34,7 @@ const DashBoardLayout = ({ children }: { children: React.ReactNode }) => {
         </header>
 
         <main className=" bg-gray-200  overflow-hidden     ">
-          <div className="absolute bottom-10 right-10 bg-[#4396c7] h-12 w-12 rounded-full flex items-center justify-center ">
+          <div className="  absolute bottom-10 right-10 bg-[#4396c7] h-12 w-12 rounded-full hidden md:flex items-center justify-center z-999999 ">
             <button
               onClick={() => dispatch(toggleLayoutSidebar(true))}
               className="  text-white  text-3xl animate-spin  "
@@ -46,7 +46,7 @@ const DashBoardLayout = ({ children }: { children: React.ReactNode }) => {
         </main>
       </section>
 
-      <aside className="overflow-hidden   ">
+      <aside className="overflow-hidden  hidden md:block  ">
         <LayoutSidebar />
       </aside>
     </div>

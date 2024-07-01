@@ -15,11 +15,11 @@ import { BsFacebook } from "react-icons/bs";
 
 const ProfileInfo: React.FC<{ user: any }> = ({ user }) => {
   return (
-    <div className="relative top-[-6rem] mx-3 sm:mx-5 md:mx-10 grid grid-cols-12 gap-5   ">
+    <div className=" -translate-y-18  mx-3 sm:mx-5 md:mx-10 grid grid-cols-12 gap-5    ">
       {/* user profile info */}
-      <section className="col-span-12 lg:col-span-3 ">
+      <section className="col-span-12 lg:col-span-3   rounded-lg">
         {/* info */}
-        <div className=" p-5 sm:p-8 bg-white  rounded-lg shadow light-darkmode dark:text-gray-50">
+        <div className=" p-5 sm:p-8 bg-white  rounded-lg shadow  darkmode dark:text-gray-50">
           <h2 className="text-xl text-gray-800 dark:text-gray-50 font-bold mb-10">
             Info
           </h2>
@@ -58,7 +58,7 @@ const ProfileInfo: React.FC<{ user: any }> = ({ user }) => {
         </div>
 
         {/* Portfolio */}
-        <div className=" p-5 bg-white  rounded-lg shadow mt-10 light-darkmode ">
+        <div className=" p-5 bg-white  rounded-lg shadow mt-10  darkmode ">
           <h3 className="text-xl text-gray-800 dark:text-gray-50 font-semibold  mb-10">
             Portfolio
           </h3>
@@ -80,8 +80,8 @@ const ProfileInfo: React.FC<{ user: any }> = ({ user }) => {
         </div>
       </section>
       {/* about */}
-      <section className=" col-span-12 lg:col-span-9 light-darkmode ">
-        <div className=" p-5 bg-white  rounded-lg shadow w-full light-darkmode ">
+      <section className=" col-span-12 lg:col-span-9  darkmode  rounded-lg ">
+        <div className=" p-5 bg-white  rounded-lg shadow w-full  darkmode ">
           <h2 className="text-xl text-gray-800 dark:text-gray-50 font-semibold mb-10">
             About
           </h2>

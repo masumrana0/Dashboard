@@ -15,12 +15,16 @@ const LayoutChanger = () => {
   };
   return (
     <div className="p-4">
-      <h2 className="text-brandcolor dark:text-brandcolorlighter font-semibold text-sm">LAYOUT</h2>
-      <h4 className="text-gray-500 dark:text-gray-50 tracking-tighter text-sm">
-        Choose your layout
-      </h4>
+      <div className="flex flex-col justify-center items-left lg:px-7">
+        <h2 className="text-brandcolor dark:text-brandcolorlighter font-semibold text-sm">
+          LAYOUT
+        </h2>
+        <h4 className="text-gray-500 dark:text-gray-50 tracking-tighter text-sm">
+          Choose your layout
+        </h4>
+      </div>
 
-      <section className="flex items-center gap-5 mt-3">
+      <section className="flex items-center justify-center flex-wrap gap-5 mt-3">
         {/* Vertical */}
         <button onClick={() => handleChangeLayout(false)}>
           <div
