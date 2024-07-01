@@ -15,7 +15,7 @@ import FullName from "@/service/name.service";
 import ProfileInfo from "@/components/profile/ProfileInfo";
 import ProfileEditForm from "@/components/profile/ProfileEditForm";
 import ChangeCoverPhoto from "@/components/profile/ChangeCoverPhoto";
-
+// dummy profile picture
 import angela from "/public/dummy/avatar-3.jpg";
 
 // Redux

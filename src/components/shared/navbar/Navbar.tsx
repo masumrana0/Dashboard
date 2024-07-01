@@ -1,3 +1,12 @@
+/**
+ * Title: 'Navbar develop By Masum Rana'
+ * Description: ''
+ * Email:'masum.rana6267@gmail.com'
+ * Author: 'Masum Rana'
+ * Date: 01-07-2024
+ *
+ */
+
 "use client";
 import React from "react";
 import "./Navbar.css";
@@ -38,7 +47,7 @@ const Navbar: React.FC<{}> = () => {
         {/* Left section  */}
         <section className="h-full  flex items-center  sm:gap-2  mr-2 ">
           <button
-            className={`text-2xl lg:text-3xl sm:block md:hidden lg:block ${
+            className={`text-3xl sm:block md:hidden lg:block ${
               layoutState && "lg:hidden"
             }`}
             onClick={() => dispatch(setOpenSidebar())}

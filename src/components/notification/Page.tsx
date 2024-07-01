@@ -8,8 +8,8 @@ const NotificationComponentPage = () => {
         Notifications
       </h2>
 
-      <section className="mt-10 flex flex-col items-center w-full overflow-y-auto overflow-x-hidden h-[70%] ">
-        {Array(6)
+      <section className="mt-10 flex flex-col items-center w-full overflow-y-auto overflow-x-hidden  pb-5 h-[calc(100vh-150px)]  md:h-[calc(100vh-250px)] no-scrollbar ">
+        {Array(10)
           .fill("")
           .map((_, index) => (
             <div
@@ -28,7 +28,7 @@ const NotificationComponentPage = () => {
                   <h2 className="text-gray-700 font-semibold dark:text-gray-50 text-md">
                     Emperio
                   </h2>
-                  <p className="text-gray-600 text-sm dark:text-gray-50">
+                  <p className="text-gray-600 text-xs md:text-sm dark:text-gray-50">
                     Admin and other team accepted your work request
                   </p>
                   <p className="text-gray-600 text-xs mt-1 dark:text-gray-100">
@@ -37,7 +37,7 @@ const NotificationComponentPage = () => {
                 </div>
               </div>
               <div className="flex items-center">
-                <span className="text-xs tracking-tighter p-1 bg-slate-200 text-gray-600 rounded text-nowrap">
+                <span className="text-xs tracking-tighter p-1 bg-slate-200 dark:bg-gray-700 dark:text-gray-50 text-gray-600 rounded text-nowrap">
                   24, Oct 2022
                 </span>
               </div>

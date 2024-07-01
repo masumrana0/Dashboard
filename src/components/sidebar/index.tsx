@@ -4,17 +4,18 @@ import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "@/Redux/hooks";
 import { sidebarToggle } from "@/Redux/slices/layoutSlice";
 import SidebarDropdown from "./SidebarDropdown";
-import { ISidebarMenuItem } from "@/interface/dashboard";
+ 
 
 // icons
 import { CgMenuLeft } from "react-icons/cg";
 import { HiArrowLongLeft } from "react-icons/hi2";
 import { usePathname } from "next/navigation";
+import { INavMenuItem } from "@/interface/dashboard";
 
 // sidebar props interface
 interface ISidebarProps {
   title?: string;
-  menuGroups: ISidebarMenuItem[];
+  menuGroups: INavMenuItem[];
 }
 
 const Sidebar: React.FC<ISidebarProps> = ({ menuGroups, title }) => {

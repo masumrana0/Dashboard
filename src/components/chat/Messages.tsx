@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import MessageSender from "./MessageSender";
 import { useAppSelector } from "@/Redux/hooks";
 import FullName from "@/service/name.service";
@@ -9,6 +9,7 @@ import formatTimestamp from "../custom/FormatTimestamp";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { useDispatch } from "react-redux";
 import { setOpenMessage } from "@/Redux/slices/chatSlice";
+import Conversations from "./Conversations";
 
 const Messages = () => {
   // Redux
@@ -34,10 +35,22 @@ const Messages = () => {
     oppositeParticipant?.name as IName
   );
 
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [conversation]);
+
   return (
     <div className="w-full  h-full  md:rounded-md  overflow-hidden">
       {/* Chat Section */}
-      <section className="  overflow-y-auto h-[calc(100vh-150px)] md:h-[calc(100vh-205px)]   darkmode  bg-white ">
+      <section className="  overflow-y-auto h-[calc(100vh-150px)] md:h-[calc(100vh-250px)]   darkmode  bg-white ">
         {/* Top section with profile info */}
         <section className="flex items-center  p-2 bg-brandcolor sticky top-0">
           <button
@@ -633,6 +646,8 @@ const Messages = () => {
               />
             </div>
           ))}
+
+          <div ref={messagesEndRef} />
         </section>
       </section>
       <section className="h-[50px]   md:h-[100px] overflow-hidden ">

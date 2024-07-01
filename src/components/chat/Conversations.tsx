@@ -1,15 +1,19 @@
 "use client";
 import React, { useEffect } from "react";
+// Components
 import ConversationItem from "./ConversationItem";
-import anna from "/public/dummy/avatar-3.jpg";
 import SearchMessage from "./SearchMessage";
+
+// redux
 import { useAppDispatch } from "@/Redux/hooks";
 import { setConversation } from "@/Redux/slices/chatSlice";
+
+import anna from "/public/dummy/avatar-3.jpg";
 
 const Conversations = () => {
   const dispatch = useAppDispatch();
 
-  //   all Conversation data
+  //   dummy Conversation data
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const allConversations = [
     {
@@ -833,7 +837,7 @@ const Conversations = () => {
         </h4>
       </section>
 
-      <section className="h-[calc(100vh-190px)] md:h-[calc(100vh-320px)] pb-32 md:pb-0 overflow-y-auto overflow-hidden px-5 no-scrollbar z-50">
+      <section className="h-[calc(100vh-190px)] md:h-[calc(100vh-370px)] pb-32 md:pb-0 overflow-y-auto overflow-hidden px-5 no-scrollbar z-50">
         {allConversations.map((conversation) => (
           <ConversationItem
             key={conversation.conversationId}

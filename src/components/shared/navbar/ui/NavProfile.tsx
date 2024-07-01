@@ -25,14 +25,14 @@ const NavProfile = () => {
   };
 
   return (
-    <div onMouseLeave={() => setOpen(false)}>
+    <div className="relative" onMouseLeave={() => setOpen(false)}>
       <button
         onClick={() => setOpen(!isOpen)}
         className=" mx-2 flex items-center justify-center gap-2  md:px-5 md:py-2 dark:bg-gray-700 dark:hover:bg-gray-800 bg-gray-200 hover:bg-gray-300  color-transition  rounded-full md:rounded-none   "
       >
         <Image
           src={angela}
-          className="rounded-full h-10 w-10 object-cover  overflow-hidden" 
+          className="rounded-full h-10 w-10 object-cover  overflow-hidden"
           width={100}
           height={100}
           alt="user avatar"
@@ -48,9 +48,11 @@ const NavProfile = () => {
       </button>
 
       <div
-        className={`absolute  bg-white    rounded-lg shadow-lg  min-w-[13rem] right-0  ${
-          isOpen ? "top-18 opacity-100" : "top-16 opacity-0 pointer-events-none"
-        } transition-all   duration-500 bg-white shadow-md  darkmode  `}
+        className={` absolute right-0 bg-white py-2 rounded-lg shadow-lg    w-[13rem]  transform transition-all duration-500 ease-in-out ${
+          isOpen
+            ? "translate-y-0 opacity-100 z-999999"
+            : "translate-y-4 opacity-0 pointer-events-none"
+        } dark:bg-gray-800 dark:text-white`}
       >
         <h3 className="font-semibold text-gray-500 dark:!text-gray-300  p-4">
           Welcome {user.name.firstName}
@@ -59,13 +61,13 @@ const NavProfile = () => {
         <div className="mt-5">
           <Link
             className="flex items-center gap-1 font-semibold  px-4 py-2 hover:bg-slate-100  text-gray-500 dark:!text-gray-300 dark:hover:!text-blue-600"
-            href={"/profile"}
+            href={"/dashboard/profile"}
           >
             <FaUserCircle /> Profile
           </Link>
           <Link
             className="flex items-center gap-1 font-semibold   px-4 py-2 hover:bg-slate-100 text-gray-500 dark:!text-gray-300  dark:hover:!text-blue-600"
-            href={"/messages"}
+            href={"/dashboard/chat"}
           >
             <MdOutlineMessage /> Messages
           </Link>

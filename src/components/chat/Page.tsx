@@ -1,10 +1,13 @@
 "use client";
 import React from "react";
+// components
 import Conversations from "./Conversations";
 import Messages from "./Messages";
+// redux
 import { useAppSelector } from "@/Redux/hooks";
 
 const ChatComponentPage = () => {
+  // redux
   const isOpenMessage = useAppSelector(
     (state) => state.chatSlice.isOpenMessage
   );
