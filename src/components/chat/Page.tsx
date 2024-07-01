@@ -3,7 +3,6 @@ import React from "react";
 import Conversations from "./Conversations";
 import Messages from "./Messages";
 import { useAppSelector } from "@/Redux/hooks";
-import MessageSender from "./MessageSender";
 
 const ChatComponentPage = () => {
   const isOpenMessage = useAppSelector(
@@ -14,7 +13,7 @@ const ChatComponentPage = () => {
     <div className="h-full   overflow-hidden ">
       <div className="light-darkmode p-3 hidden md:grid grid-cols-12 gap-5   text-gray-200    ">
         {/* Conversations  */}
-        <section className="md:col-span-4 lg:col-span-3">
+        <section className="md:col-span-4 lg:col-span-3 h-full">
           <Conversations />
         </section>
 

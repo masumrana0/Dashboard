@@ -3,7 +3,7 @@ import { authKey } from "@/constants/storegeKey";
 import { instance as axiosInstance } from "@/helpers/axios/axiosInstance";
 import { getBaseUrl } from "@/helpers/config/envConfig";
 import { getFromLocalStorage, setToLocalStorage } from "@/utils/local-storage";
-import { IDecodedToken } from "@/types/shared";
+// import { IDecodedToken } from "@/types/shared";
 
 export const storeUserInfo = ({ accessToken }: { accessToken: string }) => {
   return setToLocalStorage(authKey, accessToken as string);
@@ -16,11 +16,11 @@ export const isLoggedIn = () => {
   return !!authToken;
 };
 
-export const getUserInfo = (): IDecodedToken | null => {
+export const getUserInfo = (): any | null => {
   if (isLoggedIn()) {
     const token = getFromLocalStorage(authKey);
     try {
-      const userDecodedData = jwtDecode(token as string) as IDecodedToken;
+      const userDecodedData = jwtDecode(token as string);
       return userDecodedData;
     } catch (error) {
       console.error("Error decoding token:", error);

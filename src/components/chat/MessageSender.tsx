@@ -46,7 +46,7 @@ const MessageSender: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center p-4   bg-white   darkmode lg:px-32 h-full     w-full border-t-2 border-gray-200">
+    <div className="flex items-center p-4 py-2  bg-white   darkmode lg:px-32 h-full     w-full border-t-2 border-gray-200">
       <div className="flex justify-center items-center gap-2 mx-4 relative">
         <div
           onMouseLeave={() => setPickerVisible(!isPickerVisible)}
@@ -71,7 +71,7 @@ const MessageSender: React.FC = () => {
       </div>
 
       <textarea
-        className="w-full h-12 border rounded-md px-3 py-2 outline-none hover:border-blue-300 light-darkmode "
+        className="w-full h-12 border rounded-md px-3 py-2 outline-none hover:border-blue-300 text-gray-800 light-darkmode "
         placeholder="Type your message..."
         value={textAreaValue}
         onChange={(e) => setTextAreaValue(e.target.value)}

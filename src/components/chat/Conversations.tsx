@@ -10,6 +10,7 @@ const Conversations = () => {
   const dispatch = useAppDispatch();
 
   //   all Conversation data
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const allConversations = [
     {
       conversationId: "1",
@@ -814,11 +815,11 @@ const Conversations = () => {
 
   useEffect(() => {
     dispatch(setConversation(allConversations[0]));
-  }, []);
+  }, [allConversations, dispatch]);
 
   return (
-    <div className=" bg-white darkmode  rounded-md h-full ">
-      <section className="h-[225px]  mb-5">
+    <div className=" bg-white darkmode  md:rounded-md h-full overflow-hidden ">
+      <section className="h-[200px]  mb-2">
         <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-50 tracking-tighter p-5">
           Messages
         </h2>
@@ -832,7 +833,7 @@ const Conversations = () => {
         </h4>
       </section>
 
-      <section  className="h-[calc(100vh-320px)] overflow-y-auto pb-10 p-5 no-scrollbar">
+      <section className="h-[calc(100vh-190px)] md:h-[calc(100vh-320px)] pb-32 md:pb-0 overflow-y-auto overflow-hidden px-5 no-scrollbar z-50">
         {allConversations.map((conversation) => (
           <ConversationItem
             key={conversation.conversationId}

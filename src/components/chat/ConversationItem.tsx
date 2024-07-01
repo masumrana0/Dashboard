@@ -38,7 +38,7 @@ const ConversationItem: React.FC<{
   return (
     <button
       onClick={handleOpenMessage}
-      className="w-full text-left flex     justify-between py-3 px-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded z-10"
+      className="w-full text-left flex  justify-between py-3 px-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded z-10"
     >
       <div className="flex items-center gap-2">
         <div className="relative">

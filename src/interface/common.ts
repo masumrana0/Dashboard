@@ -11,3 +11,7 @@ export interface ICommonUser {
   photo: string | StaticImageData;
   role?: string;
 }
+
+export interface ITheme {
+  theme: "light" | "dark";
+}

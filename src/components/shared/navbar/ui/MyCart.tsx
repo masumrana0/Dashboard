@@ -6,7 +6,6 @@ import productImg from "/public/icons/img-1.png";
 import { IoBagOutline } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
 import ClickOutside from "@/components/custom/ClickOutSide";
-import Link from "next/link";
 
 const MyCart = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -97,8 +96,6 @@ const MyCart = () => {
       <div ref={dropdownRef} className="md:relative    ">
         {/* dropdown button  */}
         <button
-          // onBlur={() => setOpen(false)}
-
           onClick={handleToggleOpen}
           className={`relative text-gray-500 sm:h-[3rem] h-[2.5rem]   sm:w-[3rem] w-[2.5rem]  text-[1.5rem] sm:text-2xl flex items-center justify-center  p-2 rounded-full dark:text-white dark:hover:text-gray-500     ${
             dropdownOpen && "bg-slate-200"
