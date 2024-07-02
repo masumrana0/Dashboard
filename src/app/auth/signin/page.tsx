@@ -1,17 +1,24 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 // import { Metadata } from "next";
 // components
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormInput";
 import { companyName } from "@/content/companyName";
-import { ISignInData } from "@/interface/auth";
 import { useTheme } from "@/components/darkmode";
 import AuthBanner from "../ui/AuthBanner";
 import { signInSchema } from "@/schema/auth.schema";
+import { useSigninMutation } from "@/Redux/api/authApi";
+import { setToLocalStorage } from "@/utils/local-storage";
+import { authKey } from "@/constants/storegeKey";
+
+// interface
+import { ISignInData, IValidationResponse } from "@/interface/auth";
+import LoadingSpinner from "@/components/shared/lodingspinner";
 
 // export const metadata: Metadata = {
 //   title: "Next.js SignIn Page | TailAdmin - Next.js Dashboard Template",
@@ -21,14 +28,37 @@ import { signInSchema } from "@/schema/auth.schema";
 const SignIn: React.FC = () => {
   // for use darkmode in this page
   useTheme();
+
+  const [validationMessage, setValidationMessage] = useState<string | null>(
+    null
+  );
+  const router = useRouter();
+
+  // redux rtk
+  const [setSinup, { isLoading }] = useSigninMutation();
   // handle Login
-  const handleSignIn = (data: ISignInData) => {
-    console.log(data);
+  const handleSignIn = async (data: ISignInData) => {
+    const res = await setSinup(data).unwrap();
+    // handling validation response and setup accessToken
+    if ("validationResponse" in res) {
+      setValidationMessage(res?.validationResponse?.message);
+    } else if ("accessToken" in res) {
+      setToLocalStorage(authKey, res?.accessToken);
+      toast.success("You are Sigin successfully");
+      router.back();
+    }
   };
 
   return (
     <div className="light-darkmode h-screen overflow-hidden">
       <div className="container mx-auto overflow-hidden rounded-md border   bg-white shadow-lg   flex items-center justify-center  mt-20  darkmode ">
+        {isLoading && (
+          <div className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+            <div className="absolute">
+              <LoadingSpinner size="regular" />
+            </div>
+          </div>
+        )}
         <div className="flex flex-wrap items-center ">
           <section className="hidden w-full xl:block xl:w-1/2">
             <AuthBanner />
@@ -47,21 +77,24 @@ const SignIn: React.FC = () => {
                     label="Email"
                     type="email"
                     name="email"
+                    value={"Evalles35645@gmail.com"}
                     placeholder="Enter your email"
                     className="py-3 px-4  border-gray-300"
                   />
                 </div>
-
                 <div className="mb-4">
                   <FormInput
                     label="Re-type Password"
                     type="password"
                     name="password"
+                    value={"2314Mi@$@00AVUVrLfQ2CE6lE"}
                     placeholder="Enter your password"
                     className="py-3 px-4 border-gray-300"
                   />
                 </div>
-
+                {validationMessage && (
+                  <p className="text-red my-3 text-sm">{validationMessage}</p>
+                )}
                 <div className="mb-5">
                   <input
                     type="submit"
@@ -106,7 +139,6 @@ const SignIn: React.FC = () => {
                   </span>
                   Sign in with Google
                 </button>
-
                 <div className="mt-6 text-center">
                   <p>
                     Don’t have any account?{" "}

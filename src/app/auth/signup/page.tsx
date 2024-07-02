@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -8,11 +8,16 @@ import Image from "next/image";
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormInput";
 import { companyName } from "@/content/companyName";
-
-import { ISignInData, ISignUpData } from "@/interface/auth";
+import { ISignUpData } from "@/interface/auth";
 import { useTheme } from "@/components/darkmode";
 import AuthBanner from "../ui/AuthBanner";
 import { signUpSchema } from "@/schema/auth.schema";
+import { useSigninMutation, useSignupMutation } from "@/Redux/api/authApi";
+import { setToLocalStorage } from "@/utils/local-storage";
+import { authKey } from "@/constants/storegeKey";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import LoadingSpinner from "@/components/shared/lodingspinner";
 
 // export const metadata: Metadata = {
 //   title: "Next.js SignIn Page | TailAdmin - Next.js Dashboard Template",
@@ -22,14 +27,39 @@ import { signUpSchema } from "@/schema/auth.schema";
 const SignUp: React.FC = () => {
   // for use darkmode in this page
   useTheme();
+  const [validationMessage, setValidationMessage] = useState<string | null>(
+    null
+  );
+
+  const router = useRouter();
+  //   Redux rtk
+  const [setSignup, { isLoading }] = useSignupMutation();
+
+  //   const []=use
   // handle Login
-  const handleSignUp = (data: ISignUpData) => {
-    console.log(data);
+  const handleSignUp = async (data: ISignUpData) => {
+    const res = await setSignup(data).unwrap();
+    console.log(res);
+    // handling validation response and setup accessToken
+    if ("validationResponse" in res) {
+      setValidationMessage(res?.validationResponse?.message);
+    } else if ("accessToken" in res) {
+      setToLocalStorage(authKey, res?.accessToken);
+      toast.success("You are Sigup successfully");
+      router.push("/");
+    }
   };
 
   return (
     <div className="light-darkmode h-screen overflow-hidden">
       <div className="container mx-auto overflow-y-auto max-h-full rounded-md border   bg-white shadow-lg   flex items-center justify-center  mt-5 md:mt-10  darkmode ">
+        {isLoading && (
+          <div className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+            <div className="absolute">
+              <LoadingSpinner size="regular" />
+            </div>
+          </div>
+        )}
         <div className="flex flex-wrap items-center ">
           <section className="hidden w-full xl:block xl:w-1/2">
             <AuthBanner />
@@ -92,6 +122,9 @@ const SignUp: React.FC = () => {
                     className="py-3 px-4 border-gray-300"
                   />
                 </div>
+                {validationMessage && (
+                  <p className="text-red my-3 text-sm">{validationMessage}</p>
+                )}
 
                 <div className="my-5 ">
                   <input

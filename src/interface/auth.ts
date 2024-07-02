@@ -13,3 +13,7 @@ export interface ISignUpData {
   password: string;
   confirmPassword: string;
 }
+
+export interface IValidationResponse {
+  message?: string;
+}

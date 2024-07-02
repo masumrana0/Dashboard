@@ -42,7 +42,9 @@ const FormInput = ({
     <div className="w-full">
       <div className="flex items-center">
         {label ? (
-          <span className="font-[500] text-sm sm:text-md md:text-base text-nowrap block mb-1">{label}</span>
+          <span className="font-[500] text-sm sm:text-md md:text-base text-nowrap block mb-1">
+            {label}
+          </span>
         ) : null}
         {required ? <span className="text-red-500">*</span> : null}
       </div>
@@ -61,6 +63,7 @@ const FormInput = ({
                 type={isVisible ? "text" : "password"}
                 placeholder={placeholder}
                 className="outline-none w-full bg-inherit"
+                defaultValue={value ? value : field.value}
                 {...field}
               />
               <button type="button" onClick={() => setVisable(!isVisible)}>
@@ -76,7 +79,7 @@ const FormInput = ({
               )}
               placeholder={placeholder}
               {...field}
-              value={value ? value : field.value}
+              defaultValue={value ? value : field.value}
             />
           )
         }
