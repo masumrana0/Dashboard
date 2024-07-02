@@ -1,10 +1,14 @@
 "use client";
 import React from "react";
+// Redux
 import { useAppDispatch, useAppSelector } from "@/Redux/hooks";
 import { toggleLayoutSidebar } from "@/Redux/slices/layoutSlice";
-import { RxCross2 } from "react-icons/rx";
+// components
 import ColorScheme from "./ui/ColorScheme";
 import LayoutChanger from "./ui/LayoutChanger";
+
+// icons
+import { RxCross2 } from "react-icons/rx";
 
 const LayoutSidebar = () => {
   // Redux
@@ -35,7 +39,7 @@ const LayoutSidebar = () => {
         className={` lg:w-[23rem] w-[15rem]   h-full darkmode text-[1rem] absolute top-0  text-gray-300 bg-white overflow-hidden   `}
       >
         {/* Sidebar header  */}
-        <header className="bg-brandcolor flex items-center justify-between py-2 px-4">
+        <header className="bg-brandcolor flex items-center justify-between py-3 px-4">
           <h2 className="font-bold text-gray-200 text-lg">Theme Customizer</h2>
           <button
             onClick={() => dispatch(toggleLayoutSidebar(false))}

@@ -3,9 +3,9 @@ import React from "react";
 
 const ReviewPage = () => {
   return (
-    <>
+    <div className="light-darkmode">
       <ReviewComponentPage />
-    </>
+    </div>
   );
 };
 

@@ -1,7 +1,8 @@
 "use client";
-
 import { ReactElement, ReactNode, useEffect } from "react";
 import { useForm, FormProvider, SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { AnyObjectSchema } from "yup";
 
 type FormConfig = {
   defaultValues?: Record<string, any>;
@@ -11,7 +12,9 @@ type FormConfig = {
 type FormProps = {
   children?: ReactElement | ReactNode;
   submitHandler: SubmitHandler<any>;
-} & FormConfig;
+  defaultValues?: Record<string, any>;
+  resolver?: AnyObjectSchema;
+};
 
 const Form = ({
   children,
@@ -21,9 +24,10 @@ const Form = ({
 }: FormProps) => {
   const formConfig: FormConfig = {};
 
-  if (!!defaultValues) formConfig["defaultValues"] = defaultValues;
-  if (!!resolver) formConfig["resolver"] = resolver;
-  const methods = useForm<FormProps>(formConfig);
+  if (defaultValues) formConfig["defaultValues"] = defaultValues;
+  if (resolver) formConfig["resolver"] = yupResolver(resolver);
+
+  const methods = useForm(formConfig);
 
   const { handleSubmit, reset } = methods;
 
@@ -32,7 +36,11 @@ const Form = ({
     reset();
   };
 
-  useEffect(() => reset(defaultValues), [defaultValues, reset, methods]);
+  useEffect(() => {
+    if (defaultValues) {
+      reset(defaultValues);
+    }
+  }, [defaultValues, reset]);
 
   return (
     <FormProvider {...methods}>
@@ -41,4 +49,4 @@ const Form = ({
   );
 };
 
-export default Form;
+export default Form

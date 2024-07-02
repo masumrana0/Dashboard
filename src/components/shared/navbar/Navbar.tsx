@@ -9,21 +9,20 @@
 
 "use client";
 import React from "react";
-import "./Navbar.css";
 
 // redux
 import { useAppDispatch, useAppSelector } from "@/Redux/hooks";
 import { setOpenSidebar } from "@/Redux/slices/layoutSlice";
 
 // Components
-import DarkMode from "./ui/NavDarkMode";
-import NavProfile from "./ui/NavProfile";
-import MobileSearchBar from "./ui/MobileSearchBar";
-import NavNotification from "./ui/Notification";
-import SearchBar from "./ui/SearchBar";
-import Language from "./ui/Language";
-import MyCart from "./ui/MyCart";
-import ScreenMode from "./ui/ScreenMode";
+import DarkMode from "./topSection/NavDarkMode";
+import NavProfile from "./topSection/NavProfile";
+import MobileSearchBar from "./topSection/MobileSearchBar";
+import NavNotification from "./topSection/Notification";
+import SearchBar from "./topSection/SearchBar";
+import Language from "./topSection/Language";
+import MyCart from "./topSection/MyCart";
+import ScreenMode from "./topSection/ScreenMode";
 
 // icons
 import { CgMenuLeft, CgMenuRight } from "react-icons/cg";
@@ -41,8 +40,8 @@ const Navbar: React.FC<{}> = () => {
       {/* Nav Top Section  */}
       <section
         className={`${
-          layoutState && "container mx-auto "
-        } w-full  h-[5rem] flex items-center  justify-center lg:justify-between color-transition  darkmode bg-white `}
+          layoutState && "container mx-auto px-0 "
+        } w-full  h-[5rem] px-10 flex items-center  justify-center lg:justify-between color-transition  darkmode bg-white `}
       >
         {/* Left section  */}
         <section className="h-full  flex items-center  sm:gap-2  mr-2 ">

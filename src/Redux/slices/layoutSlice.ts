@@ -7,14 +7,13 @@ interface ILayoutSlice {
   isOpenLayoutSidbar: boolean;
 }
 
-const layoutStateFromLocalStorage = localStorage.getItem("layoutState") as
+const layoutStateFromLocalStorage = getFromLocalStorage("layoutState") as
   | boolean
   | null;
 
 const initialState: ILayoutSlice = {
-  isOpenSideBar: false,
-  layoutState: layoutStateFromLocalStorage || false, //if layout's state false then it's will be vertical otherise it's will be Hozizontal
-
+  isOpenSideBar: true,
+  layoutState: layoutStateFromLocalStorage === ("true" as unknown) || false, //if layout's state false then it's will be vertical otherise it's will be Hozizontal
   isOpenLayoutSidbar: false,
 };
 

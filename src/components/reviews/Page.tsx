@@ -192,7 +192,7 @@ const ReviewComponentPage = () => {
   const layoutState = useAppSelector((state) => state.layoutSlice.layoutState);
   return (
     <div
-      className={`light-darkmode  p-3 md:p-5 lg:p-10 ${
+      className={`  p-3 md:p-5 lg:p-10 ${
         layoutState && "container mx-auto"
       } overflow-hidden `}
     >
