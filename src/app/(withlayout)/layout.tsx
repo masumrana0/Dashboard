@@ -33,7 +33,7 @@ const DashBoardLayout = ({ children }: { children: React.ReactNode }) => {
           <Navbar />
         </header>
 
-        <main className=" bg-gray-200  overflow-hidden     ">
+        <main className=" bg-gray-200 light-darkmode overflow-hidden     ">
           <div className="  absolute bottom-10 right-10 bg-[#4396c7] h-12 w-12 rounded-full hidden md:flex items-center justify-center z-999999 ">
             <button
               onClick={() => dispatch(toggleLayoutSidebar(true))}

@@ -1,10 +1,6 @@
 import * as yup from "yup";
 
 export const signUpSchema = yup.object().shape({
-  name: yup.object().shape({
-    firstName: yup.string().required("First name is required"),
-    lastName: yup.string(),
-  }),
   email: yup
     .string()
     .email("Invalid email format")
@@ -36,4 +32,21 @@ export const signInSchema = yup.object().shape({
     .string()
     .min(6, "Password must be at least 6 characters")
     .required("Password is required"),
+});
+
+export const resetPasswordSchema = yup.object().shape({
+  newPassword: yup
+    .string()
+    .required("New Password is required")
+    .min(6, "Password must be at least 8 characters long")
+    .matches(/[A-z]/, "Password must contain at least one  letter")
+    .matches(/[0-9]/, "Password must contain at least one number"),
+  // .matches(
+  //   /[!@#$%^&*(),.?":{}|<>]/,
+  //   "Password must contain at least one special character"
+  // ),
+  confirmNewPassword: yup
+    .string()
+    .required("Confirm Password is required")
+    .oneOf([yup.ref("newPassword"), ""], "Passwords must match"),
 });

@@ -17,6 +17,7 @@ interface IInput {
   validation?: object;
   label?: string;
   required?: boolean;
+  defaultValue?: string;
   className?: string;
 }
 
@@ -29,6 +30,7 @@ const FormInput = ({
   label,
   required,
   className,
+  defaultValue,
 }: IInput) => {
   const {
     control,
@@ -51,11 +53,12 @@ const FormInput = ({
       <Controller
         control={control}
         name={name}
+        // defaultValue={defaultValue ? defaultValue : field.value}
         render={({ field }) =>
           type === "password" ? (
             <div
               className={cn(
-                "my-2 w-full border border-gray-300 hover:border-blue-500 light-darkmode rounded flex items-center py-[7px] px-2",
+                "my-2 w-full border border-gray-300 hover:border-blue-500 light-darkmode rounded flex items-center py-[7px] px-3",
                 className
               )}
             >
@@ -63,7 +66,8 @@ const FormInput = ({
                 type={isVisible ? "text" : "password"}
                 placeholder={placeholder}
                 className="outline-none w-full bg-inherit"
-                defaultValue={value ? value : field.value}
+                defaultValue={defaultValue ? defaultValue : field.value}
+                // value={value ? value : field.value}
                 {...field}
               />
               <button type="button" onClick={() => setVisable(!isVisible)}>
@@ -74,17 +78,18 @@ const FormInput = ({
             <input
               type={type}
               className={cn(
-                "w-full border border-gray-300 py-[7px] px-2 rounded outline-none hover:border-blue-500 light-darkmode",
+                "w-full border border-gray-300 py-[7px] px-3 rounded outline-none hover:border-blue-500 light-darkmode",
                 className
               )}
               placeholder={placeholder}
+              defaultValue={defaultValue ? defaultValue : field.value}
+              // value={value ? value : field.value}
               {...field}
-              defaultValue={value ? value : field.value}
             />
           )
         }
       />
-      <small style={{ color: "red" }}>{errorMessage}</small>
+      <small className="text-red-500">{errorMessage}</small>
     </div>
   );
 };

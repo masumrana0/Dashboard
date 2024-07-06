@@ -27,11 +27,12 @@ import LoadingSpinner from "@/components/shared/lodingspinner";
 
 const SignIn: React.FC = () => {
   // for use darkmode in this page
-  useTheme();
+  // useTheme();
 
   const [validationMessage, setValidationMessage] = useState<string | null>(
     null
   );
+
   const router = useRouter();
 
   // redux rtk
@@ -77,7 +78,6 @@ const SignIn: React.FC = () => {
                     label="Email"
                     type="email"
                     name="email"
-                    value={"Evalles35645@gmail.com"}
                     placeholder="Enter your email"
                     className="py-3 px-4  border-gray-300"
                   />
@@ -87,13 +87,22 @@ const SignIn: React.FC = () => {
                     label="Re-type Password"
                     type="password"
                     name="password"
-                    value={"2314Mi@$@00AVUVrLfQ2CE6lE"}
                     placeholder="Enter your password"
                     className="py-3 px-4 border-gray-300"
                   />
                 </div>
+                <div className="mb-3">
+                  <Link
+                    href={"/auth/forgot-password"}
+                    className=" underline text-sm dark:text-blue-400 text-blue-500"
+                  >
+                    Forgot password
+                  </Link>
+                </div>
                 {validationMessage && (
-                  <p className="text-red my-3 text-sm">{validationMessage}</p>
+                  <p className="text-red-500 my-3 text-sm md:text-md">
+                    {validationMessage}
+                  </p>
                 )}
                 <div className="mb-5">
                   <input
@@ -103,7 +112,7 @@ const SignIn: React.FC = () => {
                   />
                 </div>
 
-                <button className="flex w-full items-center justify-center gap-3.5 rounded-lg border   bg-gray p-4 hover:bg-opacity-50   light-darkmode dark:hover:bg-opacity-50">
+                {/* <button className="flex w-full items-center justify-center gap-3.5 rounded-lg border   bg-gray p-4 hover:bg-opacity-50   light-darkmode dark:hover:bg-opacity-50">
                   <span>
                     <svg
                       width="20"
@@ -138,7 +147,7 @@ const SignIn: React.FC = () => {
                     </svg>
                   </span>
                   Sign in with Google
-                </button>
+                </button> */}
                 <div className="mt-6 text-center">
                   <p>
                     Don’t have any account?{" "}

@@ -25,8 +25,8 @@ export const sidebarContent: INavMenuItem[] = [
     icon: <IoIosPeople />,
     label: "Seller",
     children: [
-      { label: "Sellers", route: "/dashboard/Seller" },
-      { label: "Create Seller", route: "/dashboard/create-seller" },
+      { label: "Sellers", route: "/dashboard/seller" },
+      { label: "Create Seller", route: "/dashboard/seller/create-seller" },
     ],
   },
   {
@@ -34,7 +34,7 @@ export const sidebarContent: INavMenuItem[] = [
     label: "Buyer",
     children: [
       { label: "Buyers", route: "/dashboard/buyer" },
-      { label: "Create Buyer", route: "/dashboard/create-buyer" },
+      { label: "Create Buyer", route: "/dashboard/buyer/create-buyer" },
     ],
   },
   {
@@ -42,7 +42,7 @@ export const sidebarContent: INavMenuItem[] = [
     label: "Product",
     children: [
       { label: "Products", route: "/dashboard/products" },
-      { label: "Create Buyer", route: "/dashboard/create-product" },
+      { label: "Create Product", route: "/dashboard/create-product" },
     ],
   },
   {

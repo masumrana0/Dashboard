@@ -5,15 +5,20 @@ export interface ISignInData {
   password: string;
 }
 export interface ISignUpData {
-  name: {
-    firstName: string;
-    lastName?: string;
-  };
   email: string;
   password: string;
-  confirmPassword: string;
+  confirmPassword?: string;
 }
 
 export interface IValidationResponse {
   message?: string;
+}
+
+export interface IForgotPassword {
+  email: string;
+}
+
+export interface IResetPassword {
+  newPassword: string;
+  newConfirmPassword?: string;
 }

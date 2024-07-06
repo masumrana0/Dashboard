@@ -12,7 +12,7 @@ import { ISignUpData } from "@/interface/auth";
 import { useTheme } from "@/components/darkmode";
 import AuthBanner from "../ui/AuthBanner";
 import { signUpSchema } from "@/schema/auth.schema";
-import { useSigninMutation, useSignupMutation } from "@/Redux/api/authApi";
+import { useSignupMutation } from "@/Redux/api/authApi";
 import { setToLocalStorage } from "@/utils/local-storage";
 import { authKey } from "@/constants/storegeKey";
 import toast from "react-hot-toast";
@@ -38,8 +38,8 @@ const SignUp: React.FC = () => {
   //   const []=use
   // handle Login
   const handleSignUp = async (data: ISignUpData) => {
-    const res = await setSignup(data).unwrap();
-    console.log(res);
+    const { confirmPassword, ...otherData } = data;
+    const res = await setSignup(otherData).unwrap();
     // handling validation response and setup accessToken
     if ("validationResponse" in res) {
       setValidationMessage(res?.validationResponse?.message);
@@ -74,7 +74,7 @@ const SignUp: React.FC = () => {
               {/* Signin Form  */}
               <Form resolver={signUpSchema} submitHandler={handleSignUp}>
                 {/* Name  */}
-                <div className="mb-4">
+                {/* <div className="mb-4">
                   <FormInput
                     label="First Name"
                     type="text"
@@ -82,8 +82,8 @@ const SignUp: React.FC = () => {
                     placeholder="Enter your firstName"
                     className="py-3 px-4  border-gray-300 "
                   />
-                </div>
-                <div className="mb-4">
+                </div> */}
+                {/* <div className="mb-4">
                   <FormInput
                     label="Last Name"
                     type="text"
@@ -91,7 +91,7 @@ const SignUp: React.FC = () => {
                     placeholder="Enter your lastName"
                     className="py-3 px-4  border-gray-300  "
                   />
-                </div>
+                </div> */}
 
                 {/* input input  */}
                 <div className="mb-4">
@@ -123,7 +123,9 @@ const SignUp: React.FC = () => {
                   />
                 </div>
                 {validationMessage && (
-                  <p className="text-red my-3 text-sm">{validationMessage}</p>
+                  <p className="text-red-500 my-3 text-sm">
+                    {validationMessage}
+                  </p>
                 )}
 
                 <div className="my-5 ">
