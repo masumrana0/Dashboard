@@ -7,7 +7,7 @@ import { IResetPassword } from "@/interface/auth";
 import { useResetPasswordMutation } from "@/Redux/api/authApi";
 import { resetPasswordSchema } from "@/schema/auth.schema";
 import { useParams, useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const ResetPassword: React.FC = () => {
@@ -18,12 +18,18 @@ const ResetPassword: React.FC = () => {
     null
   );
   // redux rkt
-  const [resetPassword, { isLoading }] = useResetPasswordMutation();
+  const [resetPassword, { isLoading, isError }] = useResetPasswordMutation();
 
   const param = useParams();
-
   const token = param.token;
 
+  useEffect(() => {
+    if (isError) {
+      setValidationMessage(
+        "Invalid or expired Link!.Please Reset Password again"
+      );
+    }
+  }, [isError]);
   const router = useRouter();
   const handleSubmit = async (data: IResetPassword) => {
     const res = await resetPassword({ data, token }).unwrap();
@@ -32,7 +38,9 @@ const ResetPassword: React.FC = () => {
       setValidationMessage(res?.validationResponse?.message);
     } else {
       setValidationMessage("Password has been reset successfully.");
-      toast.success("Your password has been reset.");
+      toast.success(
+        "The reset link is either invalid or has expired. Please request a new password reset link again."
+      );
       router.push("/auth/signin");
     }
   };

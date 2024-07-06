@@ -31,6 +31,12 @@ const authApi = baseApi.injectEndpoints({
         data: { newPassword: data.newPassword },
       }),
     }),
+    verifyEmail: build.mutation({
+      query: (token: string) => ({
+        url: `/auth/verify-email/${token}`,
+        method: "PATCH",
+      }),
+    }),
   }),
   overrideExisting: false,
 });
@@ -40,4 +46,5 @@ export const {
   useSignupMutation,
   useForgotPasswordMutation,
   useResetPasswordMutation,
+  useVerifyEmailMutation,
 } = authApi;

@@ -45,8 +45,12 @@ const SignUp: React.FC = () => {
       setValidationMessage(res?.validationResponse?.message);
     } else if ("accessToken" in res) {
       setToLocalStorage(authKey, res?.accessToken);
-      toast.success("You are Sigup successfully");
-      router.push("/");
+      toast.success(
+        "You are Sigup successfully.Please check your email inbox."
+      );
+      setTimeout(() => {
+        router.push("/");
+      }, 3000);
     }
   };
 
@@ -68,7 +72,7 @@ const SignUp: React.FC = () => {
             <div className="w-full p-5   xl:px-17.5 xl:py-5">
               <span className="mb-1.5 block font-medium">Start for free</span>
               <h2 className="mb-9 text-lg  md:text-2xl font-bold text-black dark:text-white  ">
-                Sign In to {companyName}
+                Sign Un to {companyName}
               </h2>
 
               {/* Signin Form  */}
