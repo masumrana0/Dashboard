@@ -1,4 +1,9 @@
-import { IForgotPassword, ISignInData, ISignUpData } from "@/interface/auth";
+import {
+  IChangePassword,
+  IForgotPassword,
+  ISignInData,
+  ISignUpData,
+} from "@/interface/auth";
 import { baseApi } from "./baseApi";
 
 const authApi = baseApi.injectEndpoints({
@@ -31,6 +36,13 @@ const authApi = baseApi.injectEndpoints({
         data: { newPassword: data.newPassword },
       }),
     }),
+    changePassword: build.mutation({
+      query: (data: IChangePassword) => ({
+        url: `/auth/change-password`,
+        method: "PATCH",
+        data: data,
+      }),
+    }),
     verifyEmail: build.mutation({
       query: (token: string) => ({
         url: `/auth/verify-email/${token}`,
@@ -47,4 +59,5 @@ export const {
   useForgotPasswordMutation,
   useResetPasswordMutation,
   useVerifyEmailMutation,
+  useChangePasswordMutation,
 } = authApi;

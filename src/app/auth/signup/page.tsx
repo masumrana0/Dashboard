@@ -41,7 +41,7 @@ const SignUp: React.FC = () => {
     const { confirmPassword, ...otherData } = data;
     const res = await setSignup(otherData).unwrap();
     // handling validation response and setup accessToken
-    if ("validationResponse" in res) {
+    if (res && "validationResponse" in res) {
       setValidationMessage(res?.validationResponse?.message);
     } else if ("accessToken" in res) {
       setToLocalStorage(authKey, res?.accessToken);

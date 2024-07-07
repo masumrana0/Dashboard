@@ -1,10 +1,7 @@
 "use client";
 import { useTheme } from "@/components/darkmode";
-import LoadingSpinner from "@/components/shared/lodingspinner";
-
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import toast from "react-hot-toast";
 import { useVerifyEmailMutation } from "@/Redux/api/authApi";
 
 const EmailVerificationLink: React.FC = () => {
@@ -21,20 +18,21 @@ const EmailVerificationLink: React.FC = () => {
   useEffect(() => {
     const verifyEmail = async () => {
       await emailVerificationLink(token as string).unwrap();
-
-      if (isError) {
-        setValidationMessage(
-          "The verification link is either invalid or has expired. Please request a new verification link."
-        );
-      } else {
-        setValidationMessage(
-          "Congratulation . Your email verification is successful."
-        );
-      }
     };
-
     verifyEmail();
-  }, [token, emailVerificationLink, router, isError]);
+  }, []);
+
+  useEffect(() => {
+    if (isError) {
+      setValidationMessage(
+        "The verification link is either invalid or has expired. Please request a new verification link."
+      );
+    } else {
+      setValidationMessage(
+        "Congratulation . Your email verification is successful."
+      );
+    }
+  }, [isError]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r  ">

@@ -22,3 +22,9 @@ export interface IResetPassword {
   newPassword: string;
   newConfirmPassword?: string;
 }
+
+export interface IChangePassword {
+  oldPassword: string;
+  newPassword: string;
+  confirmPassword?: string;
+}
